@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class IntroduceController extends Controller
 {
@@ -82,7 +83,8 @@ class IntroduceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        return view('posts.edit', ['post' => $post]);
     }
 
     /**
@@ -94,7 +96,28 @@ class IntroduceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, ['title' => 'required', 'content' => 'required|min:3']);
+
+        $post = Post::find($id);
+
+        $this->authorize('update', $post);
+
+        $post->title = $request->title;
+        $post->content = $request->content;
+
+        // $request 안에 image가 있다면 image를 저장
+        if ($request->hasFile('image')) {
+            if ($post->image) { // 만약 $post에 image가 있다면 db에서 지우고 저장하고자 하는 image를 저장한다
+                Storage::delete('/storage/images' . $post->image);
+            }
+            $fileName = time() . '_' . $request->file('image')->getClientOriginalName();
+            $post->image = $fileName;
+            $request->image->storeAs('public/images', $fileName);
+        }
+
+        $post->save();
+
+        return redirect()->route('posts.show', ['post' => $post->id]);
     }
 
     /**
@@ -103,8 +126,29 @@ class IntroduceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+
+        $this->authorize('delete', $post);
+        // 게시글에 이미지가 있다면 파일시스템에서도 삭제해줘야 한다
+        if ($post->image) {
+            Storage::delete('public/images/' . $post->image);
+        }
+        $post->delete();
+        return redirect()->route('posts.index');
+    }
+
+    // 이미지만 삭제
+    public function deleteImage($id)
+    {
+        $post = Post::find($id);
+        $this->authorize('delete', $post);
+
+        Storage::delete('public/images/' . $post->image);
+        $post->image = null;
+        $post->save();
+
+        return redirect()->route('posts.edit', ['post' => $post->id]);
     }
 }
