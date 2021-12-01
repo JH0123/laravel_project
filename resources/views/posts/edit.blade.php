@@ -2,14 +2,14 @@
     <x-slot name="header">
         <div class="flex justify-between">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edit') }}
+            {{ __('Edit Form') }}
         </h2>
-        <button onclick=location.href="{{ route('posts.show') }}" class="btn btn-info hover:bg-blue-700 font-bold text-white">상세보기</button>
+        <button onclick=location.href="{{ route('posts.show', ['post'=>$post->id]) }}" class="btn btn-info hover:bg-blue-700 font-bold text-white">상세보기</button>
         </div>
     </x-slot>
 
     <div class="m-4 p-4">
-      <form class="row g-3" action="{{ route('posts.update', ['post'=>$post->id]) }}"
+      <form id="editForm" class="row g-3" action="{{ route('posts.update',['post'=>$post->id]) }}"
       method="post" enctype="multipart/form-data">
       @method('patch')
       @csrf

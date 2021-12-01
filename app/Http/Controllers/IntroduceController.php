@@ -81,7 +81,7 @@ class IntroduceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         $post = Post::find($id);
 
@@ -99,7 +99,7 @@ class IntroduceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, ['title' => 'required', 'content' => 'required|min:3']);
+        $this->validate($request, ['title' => 'required', 'content' => 'required|min:3', 'hobby' => 'required|min:3']);
 
         $post = Post::find($id);
 
@@ -107,8 +107,8 @@ class IntroduceController extends Controller
 
         $post->title = $request->title;
         $post->content = $request->content;
-        // $post->age = $request->age;
-        // $post->hobby = $request->hobby;
+        $post->age = $request->age;
+        $post->hobby = $request->hobby;
 
         // $request 안에 image가 있다면 image를 저장
         if ($request->hasFile('image')) {

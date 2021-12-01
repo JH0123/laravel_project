@@ -22,34 +22,14 @@
             <li class="list-group-item">작성일 : {{ $post->updated_at->diffForHumans() }}</li>
         </ul>
 
-        {{-- <div class="card-body flex">
-                <div class="ml-4">
-                @can('update',$post)
-                    <form class="row g-3" action="{{ route('posts.edit',['post'=>$post->id]) }}"
-                        method="post" enctype="multipart/form-data">
-                        @method('update')
-                        @csrf
-                    <button type="submit">수정하기</button>
-                    </form>
-                @endcan
-                </div>
-
-                <div class="ml-4">
-                @can('delete',$post)
-                <form class="row g-3" action="{{ route('posts.destroy',['post'=>$post->id]) }}"
-                method="post" enctype="multipart/form-data">
-                @method('delete')
-                @csrf
-
-                <button type="submit">삭제하기</button>
-                </form>
-                @endcan
-            </div>
-        </div> --}}
-
         <div class="card-body flex">
-            @can('update',$post)
-                <a href="{{ route('posts.edit',['post'=>$post->id]) }}" class="card-link">수정하기</a>
+           @can('update',$post)
+            <a href="{{ route('posts.edit',['post'=>$post->id]) }}" class="card-link">수정하기</a>
+            {{-- <form class="card-link" action="{{ route('posts.edit',['post'=>$post->id]) }}" method="post" enctype="multipart/form-data">
+                @method('update')
+                @csrf
+                <button type="submit">수정하기</button>
+            </form> --}}
             @endcan
             
             <div class="ml-4">

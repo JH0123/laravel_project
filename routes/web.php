@@ -22,8 +22,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::resource('/posts', IntroduceController::class);
+Route::resource('/posts', IntroduceController::class)->middleware(["auth"]);
 
-Route::delete('/posts/images/{id}', [PostsController::class, "deleteImage"])->middleware(["auth"]);
+Route::delete('/posts/images/{id}', [IntroduceController::class, "deleteImage"])->middleware(["auth"]);
 
 require __DIR__ . '/auth.php';
