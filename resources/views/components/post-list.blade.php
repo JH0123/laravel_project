@@ -21,17 +21,19 @@
 </div> --}}
 
 <div class="grid grid-cols-3 m-4">
-          @foreach ($posts as $post)
-          <div class="card-body">
-              @if ($post->image)
-              <img src="{{ '/storage/images/'. $post->image }}" class="card-img-top" alt="post image">
-              @else
-              <img src="/storage/images/no image.jpg" class="card-img-top" alt="post image">
-              @endif
-          <a href="{{ route('posts.show', ['post'=>$post->id]) }}">{{ $post->title }}</a>
-          <p>{{ $post->writer->name }}</p>
-          <p>{{ $post->created_at->diffForHumans() }}</p>
-          </div>
-          @endforeach
-    {{ $posts->links() }}
+  @foreach ($posts as $post)
+    <div class="card-body">
+      @if ($post->image)
+        <img src="{{ '/storage/images/'. $post->image }}" class="card-img-top" alt="post image">
+        @else
+        <img src="/storage/images/no image.jpg" class="card-img-top" alt="post image">
+      @endif
+      <div class="ml-3">
+      <a href="{{ route('posts.show', ['post'=>$post->id]) }}" class="font-bold text-lg">{{ $post->title }}</a>
+      <p>작성자 : {{ $post->writer->name }}</p>
+      <p>작성일 : {{ $post->created_at->diffForHumans() }}</p>
+      </div>
+    </div>
+  @endforeach
+  {{ $posts->links() }}
 </div>
