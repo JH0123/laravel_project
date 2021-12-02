@@ -14,7 +14,7 @@ class Post extends Model
         "content",
         "user_id",
         "age",
-        "hobby",
+        "applicant",
         "image",
     ];
 

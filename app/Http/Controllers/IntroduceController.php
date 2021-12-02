@@ -39,7 +39,7 @@ class IntroduceController extends Controller
     public function store(Request $request)
     {
         // title, content 중 하나라도 비워져 있을 경우 오류 메시지를 출력하게 함(유효성 검사)
-        $this->validate($request, ['title' => 'required', 'content' => 'required|min:3', 'hobby' => 'required|min:3']);
+        $this->validate($request, ['title' => 'required', 'content' => 'required|min:3']);
         // dd($request->all());
 
         $fileName = null;
@@ -99,7 +99,7 @@ class IntroduceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, ['title' => 'required', 'content' => 'required|min:3', 'hobby' => 'required|min:3']);
+        $this->validate($request, ['title' => 'required', 'content' => 'required|min:3']);
 
         $post = Post::find($id);
 
@@ -108,7 +108,7 @@ class IntroduceController extends Controller
         $post->title = $request->title;
         $post->content = $request->content;
         $post->age = $request->age;
-        $post->hobby = $request->hobby;
+        $post->applicant = $request->applicant;
 
         // $request 안에 image가 있다면 image를 저장
         if ($request->hasFile('image')) {

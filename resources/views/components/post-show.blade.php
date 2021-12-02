@@ -1,5 +1,5 @@
-<div class="container">
-    <div class="card" style="width: 80%; margin:10px">
+<div class="container d-flex justify-content-center">
+    <div class="card" style="width: 30%; margin:10px">
         @if ($post->image)
             <img src="{{ '/storage/images/'. $post->image }}" class="card-img-top" alt="post image">
             @else
@@ -17,7 +17,10 @@
                 @else
                 <span>나이제한 :{{ $post->age }}</span>
             @endif</li>
-            <li class="list-group-item">취미 : {{ $post->hobby }}</li>
+            <li class="list-group-item">모집인원 : {{ $post->applicant }} 명
+                <button type="button" class="px-4 py-2 bg-green-400 rounded text-white">신청하기</button>
+            </li>
+            <li class="list-group-item">현재인원 : {{ $post->applicant }} 명</li>
             <li class="list-group-item">등록일 : {{ $post->created_at->diffForHumans() }}</li>
             <li class="list-group-item">작성일 : {{ $post->updated_at->diffForHumans() }}</li>
         </ul>

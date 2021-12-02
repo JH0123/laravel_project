@@ -32,10 +32,10 @@
         </div>
 
         <div class="col-12 m-2">
-          <label for="hobby" class="form-label">취미</label>
-          <textarea class="form-control" name="hobby" id="hobby">{{ old('hobby') }}</textarea>
+          <label for="applicant" class="form-label">모집인원</label>
+          <textarea class="form-control" name="applicant" id="applicant">{{ old('applicant') }}</textarea>
           
-          @error('hobby')
+          @error('applicant')
             <span class="text-red-800">{{ $message }}</span>
           @enderror
         </div>

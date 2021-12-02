@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
-            $table->text('hobby');
+            $table->integer('applicant');
             $table->string('age')->nullable();
             $table->string('image')->nullable();
             $table->foreignId('user_id')
