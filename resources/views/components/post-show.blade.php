@@ -17,10 +17,13 @@
                 @else
                 <span>나이제한 :{{ $post->age }}</span>
             @endif</li>
-            <li class="list-group-item">모집인원 : {{ $post->applicant }} 명
-                <button type="button" class="px-4 py-2 bg-green-400 rounded text-white">신청하기</button>
+            <li class="list-group-item">모집인원 : {{ $post->applicant }} 명</li>
+            <li class="list-group-item">현재인원 : 0 명
+                @if (Auth::user()->id == $post->user_id)
+                    @else
+                    <button type="button" class="px-4 py-2 bg-green-400 rounded text-white">신청하기</button>
+                @endif               
             </li>
-            <li class="list-group-item">현재인원 : {{ $post->applicant }} 명</li>
             <li class="list-group-item">등록일 : {{ $post->created_at->diffForHumans() }}</li>
             <li class="list-group-item">작성일 : {{ $post->updated_at->diffForHumans() }}</li>
         </ul>
