@@ -32,7 +32,7 @@
         </div>
 
         <div class="col-12 m-2">
-          <label for="applicant" class="form-label">모집인원</label>
+          <label for="applicant" class="form-label">모집인원(숫자만 입력해 주세요)</label>
           <textarea class="form-control" name="applicant" id="applicant">{{ old('applicant') }}</textarea>
           
           @error('applicant')
