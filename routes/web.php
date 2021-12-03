@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\IntroduceController;
+use App\Models\ApplyList;
 use Illuminate\Support\Facades\Route;
 
 /*

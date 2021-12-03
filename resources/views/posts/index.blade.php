@@ -8,4 +8,5 @@
         </div>
     </x-slot>
     <x-post-list :posts="$posts" />
+    @include('sweetalert::alert')
 </x-app-layout>

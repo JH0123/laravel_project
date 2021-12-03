@@ -61,7 +61,7 @@ class IntroduceController extends Controller
         }
         Post::create($input);
 
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index')->with('success', 'Post was created!');
     }
 
     /**
@@ -73,7 +73,6 @@ class IntroduceController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-
         return view('posts.show', ['post' => $post]);
     }
 
