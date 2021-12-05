@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\ApplyController;
 use App\Http\Controllers\IntroduceController;
-use App\Models\ApplyList;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,5 +26,7 @@ Route::get('/dashboard', function () {
 Route::resource('/posts', IntroduceController::class)->middleware(["auth"]);
 
 Route::delete('/posts/images/{id}', [IntroduceController::class, "deleteImage"])->middleware(["auth"]);
+
+Route::get('/apply/{id}', [ApplyController::class, "apply"]);
 
 require __DIR__ . '/auth.php';
