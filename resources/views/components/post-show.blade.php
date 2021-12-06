@@ -22,7 +22,9 @@
                 @if (Auth::user()->id == $post->user_id)
                     @else
                     {{-- <button type="button" class="px-4 py-2 bg-green-400 rounded text-white">신청하기</button> --}}
-                    <a href="/apply/{{ Auth::user()->id }}" class="btn btn-info">신청하기</a>
+                    {{-- <a href="/apply/{{ Auth::user()->id }}" class="btn btn-info">신청하기</a> --}}
+
+                     <a href="/apply/{{ $post->id }}" class="btn btn-info">신청하기</a>
                 @endif               
             </li>
             <li class="list-group-item">등록일 : {{ $post->created_at->diffForHumans() }}</li>

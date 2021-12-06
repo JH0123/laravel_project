@@ -7,5 +7,6 @@
         <button onclick=location.href="{{ route('posts.index') }}" type="button" class="btn btn-primary font-bold">목록</button>
         </div>
     </x-slot>
-    <x-post-show :post="$post" />
+    <x-post-show :post="$post" :applies="$applies" />
+    @include('sweetalert::alert')
 </x-app-layout>

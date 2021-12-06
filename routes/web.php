@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ApplyController;
 use App\Http\Controllers\IntroduceController;
+use App\Http\Controllers\MypageController;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +29,10 @@ Route::resource('/posts', IntroduceController::class)->middleware(["auth"]);
 
 Route::delete('/posts/images/{id}', [IntroduceController::class, "deleteImage"])->middleware(["auth"]);
 
-Route::get('/apply/{id}', [ApplyController::class, "apply"]);
+Route::get('/apply/{id}', [ApplyController::class, "apply"])->middleware(["auth"])->name('apply');
+
+Route::get('/mypage', [MypageController::class, "mypage"])->Middleware(['auth'])->name('mypage');
+
+// Route::get('/mypage', [MypageController::class, "applyList"])->middleware(['auth'])->name('mypage');
 
 require __DIR__ . '/auth.php';
