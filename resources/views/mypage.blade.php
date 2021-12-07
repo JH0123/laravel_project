@@ -7,5 +7,7 @@
         <button onclick=location.href="{{ route('posts.create') }}" type="button" class="btn btn-primary font-bold">글작성</button>
         </div>
     </x-slot>
-    <x-post-mypage :posts="$posts"/>
+    <x-post-mypage :posts="$posts" />
+    <x-post-mypage :applies="$apply_list" />
+    {{-- <x-post-apply_list :applies="$apply_list" /> --}}
 </x-app-layout>

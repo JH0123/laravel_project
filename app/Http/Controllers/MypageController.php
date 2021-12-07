@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Apply;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 
@@ -18,11 +19,16 @@ class MypageController extends Controller
     }
 
     // 신청자 리스트
-    // public function applyList()
-    // {
-    //     // user_id와 post_id 불러와라
-    //     $apply_list = DB::table('applies')->get();
-
-    //     return view('mypage', ['applies' => $apply_list]);
-    // }
+    /**
+     * DB에서 user_id와 post_id를 받아온다
+     * mypage
+     */
+    public function applyList()
+    {
+        // user_id와 post_id 불러와라
+        $apply_list = DB::table('applies')->get();
+        // $apply_list = Apply::where('user_id', auth()->id())->get();
+        // dd($apply_list);
+        return view('mypage', ['applies' => $apply_list]);
+    }
 }
