@@ -33,6 +33,14 @@
                 </div>
             </div>
 
+                <!-- Search -->
+                <form class="form-inline my-2 my-lg-0" type="get" action="{{ url('/search') }}">
+                    <div class="input-group">
+                        <input type="search" class="form-control" placeholder="Search" name="query">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </div>
+                </form>
+
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">

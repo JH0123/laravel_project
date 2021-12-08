@@ -29,6 +29,8 @@ Route::resource('/posts', IntroduceController::class)->middleware(["auth"]);
 
 Route::delete('/posts/images/{id}', [IntroduceController::class, "deleteImage"])->middleware(["auth"]);
 
+Route::get('/search', [IntroduceController::class, "search"]);
+
 Route::get('/apply/{id}', [ApplyController::class, "apply"])->middleware(["auth"])->name('apply');
 
 Route::get('/mypage', [MypageController::class, "mypage"])->Middleware(['auth'])->name('mypage');
