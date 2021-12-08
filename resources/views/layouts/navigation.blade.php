@@ -26,6 +26,11 @@
                         {{ __('Mypage') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('applyList')" :active="request()->routeIs('applyList')">
+                        {{ __('신청내역') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->

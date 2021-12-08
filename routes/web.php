@@ -33,4 +33,6 @@ Route::get('/apply/{id}', [ApplyController::class, "apply"])->middleware(["auth"
 
 Route::get('/mypage', [MypageController::class, "mypage"])->Middleware(['auth'])->name('mypage');
 
+Route::get('/applyList', [ApplyController::class, "applyList"])->Middleware(['auth'])->name('applyList');
+
 require __DIR__ . '/auth.php';

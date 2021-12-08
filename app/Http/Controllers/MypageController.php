@@ -17,18 +17,4 @@ class MypageController extends Controller
         $posts = Post::where('user_id', auth()->id())->latest()->paginate(10);
         return view('mypage', ['posts' => $posts]);
     }
-
-    // 신청자 리스트
-    /**
-     * DB에서 user_id와 post_id를 받아온다
-     * mypage
-     */
-    public function applyList()
-    {
-        // user_id와 post_id 불러와라
-        $apply_list = DB::table('applies')->get();
-        // $apply_list = Apply::where('user_id', auth()->id())->get();
-        // dd($apply_list);
-        return view('mypage', ['applies' => $apply_list]);
-    }
 }

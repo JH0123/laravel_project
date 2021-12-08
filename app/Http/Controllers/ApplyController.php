@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Apply;
+use Illuminate\Support\Facades\DB;
 
 class ApplyController extends Controller
 {
@@ -26,5 +27,18 @@ class ApplyController extends Controller
             // alert 안뜸
             return back()->with('error', '이미 신청되어있습니다!');
         }
+    }
+    // 신청자 리스트
+    /**
+     * DB에서 user_id와 post_id를 받아온다
+     * mypage
+     */
+    public function applyList()
+    {
+        // user_id와 post_id 불러와라
+        $applies = DB::table('applies')->get();
+        // $apply_list = Apply::where('user_id', auth()->id())->get();
+        // dd($apply_list);
+        return view('applyList', ['applies' => $applies]);
     }
 }

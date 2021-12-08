@@ -18,9 +18,8 @@
 
 <div class="container">
 <div class="row row-cols-4">
-{{-- <div class="col-lg-4 col-md-6 col-sm-12"> --}}
   @foreach ($posts as $post)
-    <div class="card mb-5 shadow-sm">
+    <div class="card ml-4 mb-5 shadow-sm">
       @if ($post->image)
         <img src="{{ '/storage/images/'. $post->image }}" class="img-fluid" alt="post image">
         @else
@@ -38,6 +37,5 @@
     </div>
   @endforeach
   {{ $posts->links() }}
-{{-- </div> --}}
 </div>
 </div>

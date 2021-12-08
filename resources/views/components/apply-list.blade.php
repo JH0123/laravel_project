@@ -1,8 +1,8 @@
 {{-- 신청 목록 --}}
-{{-- <div class="flex h-full">
+<div class="flex h-full">
 <div class="w-1/5 border-r-2 border-solid border-gray-600">신청 목록</div>
   <div class="w-4/5 flex flex-col">
-    @foreach ($apply_list as $apply)
+    @foreach ($applies as $apply)
       <div class="border p-3">                 
         {{ $apply->user_id }}님으로 부터 신청 요청이 있습니다.
         <div class="float-right">
@@ -19,4 +19,4 @@
       </div>                
     @endforeach
     </div>    
-</div> --}}
+</div>
