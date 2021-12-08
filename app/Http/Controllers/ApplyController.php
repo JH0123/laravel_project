@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Apply;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\DB;
 
 class ApplyController extends Controller
@@ -28,11 +29,7 @@ class ApplyController extends Controller
             return back()->with('error', '이미 신청되어있습니다!');
         }
     }
-    // 신청자 리스트
-    /**
-     * DB에서 user_id와 post_id를 받아온다
-     * mypage
-     */
+    // 신청자 리스트 보여주기
     public function applyList()
     {
         // user_id와 post_id 불러와라
@@ -41,4 +38,10 @@ class ApplyController extends Controller
         // dd($apply_list);
         return view('applyList', ['applies' => $applies]);
     }
+    // 신청 수락
+    public function accept(Request $request)
+    {
+    }
+
+    // 신청 거절
 }

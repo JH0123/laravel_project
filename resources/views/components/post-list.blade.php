@@ -17,13 +17,13 @@
 </div> --}}
 
 <div class="container">
-<div class="row row-cols-4">
+<div class="row row-cols-4 mt-4">
   @foreach ($posts as $post)
     <div class="card ml-4 mb-5 shadow-sm">
       @if ($post->image)
-        <img src="{{ '/storage/images/'. $post->image }}" class="img-fluid" alt="post image">
+        <img src="{{ '/storage/images/'. $post->image }}" class="card-body" alt="post image">
         @else
-        <img src="/storage/images/no image.jpg" class="img-fluid" alt="post image">
+        <img src="/storage/images/no image.jpg" class="card-body" alt="post image">
       @endif
       <div class="card-body">
         <div class="card-title">

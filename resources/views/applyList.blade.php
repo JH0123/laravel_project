@@ -6,5 +6,5 @@
         </h2>
         </div>
     </x-slot>
-        <x-apply-list :applies="$applies" />
+        <x-apply-list :applies="$applies"/>
 </x-app-layout>
