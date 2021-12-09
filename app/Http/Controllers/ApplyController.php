@@ -64,8 +64,9 @@ class ApplyController extends Controller
 
             Apply::where('id', $request->request_user_id)->delete();
 
-            return back()->with('success', '신청이 수락되었습니다!');
+            return back()->with('success', '신청이 수락되었습니다!'); // 안떠...
         } else {
+            Apply::where('user_id', $request->request_user_id)->delete();
             return back()->with('error', '이미 있는 맴버입니다!');
         }
     }
@@ -73,8 +74,7 @@ class ApplyController extends Controller
     {
         // 거절을 누르면 신청데이터 삭제
         // Apply::where('user_id', $request->request_user_id)->delete();
-        $check = Apply::where('user_id', $request->request_user_id);
-        dd($check);
+        Apply::where('user_id', $request->request_user_id)->delete();
         return redirect()->back();
     }
 }
