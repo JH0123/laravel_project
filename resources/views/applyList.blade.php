@@ -7,4 +7,5 @@
         </div>
     </x-slot>
         <x-apply-list :applies="$applies"/>
+        @include('sweetalert::alert')
 </x-app-layout>

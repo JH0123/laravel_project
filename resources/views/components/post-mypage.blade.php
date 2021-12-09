@@ -1,7 +1,7 @@
 <div class="container">
-<div class="row row-cols-4 mt-4">
+<div class="row row-cols-6 mt-4">
   @foreach ($posts as $post)
-    <div class="card ml-4 mb-5 shadow-sm">
+    <div class="card ml-4 mr-4 mb-5 shadow-sm">
       @if ($post->image)
         <img src="{{ '/storage/images/'. $post->image }}" class="card-body" alt="post image">
         @else

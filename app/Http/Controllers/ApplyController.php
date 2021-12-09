@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class ApplyController extends Controller
 {
+    // 신청하기
     public function apply($id)
     {
         // 이미 신청한 사람인가?
@@ -25,11 +26,18 @@ class ApplyController extends Controller
             Apply::create($data);
             // alert창 뜬다
             return back()->with('success', '신청이 완료되었습니다!');
-        } elseif ($check != null) {
+        } else {
             // alert 안뜸
             return back()->with('error', '이미 신청되어있습니다!');
         }
     }
+    // 신청 취소
+    public function apply_cancel($id)
+    {
+        Apply::where('user_id', $id)->delete();
+        return back()->with('success', '신청이 취소되었습니다');
+    }
+
     // 신청자 리스트 보여주기
     public function applyList()
     {
@@ -64,9 +72,11 @@ class ApplyController extends Controller
 
             Apply::where('id', $request->request_user_id)->delete();
 
-            return back()->with('success', '신청이 수락되었습니다!'); // 안떠...
+            return back()->with('success', '신청이 수락되었습니다!');
         } else {
             Apply::where('user_id', $request->request_user_id)->delete();
+
+            // 안떠...
             return back()->with('error', '이미 있는 맴버입니다!');
         }
     }
@@ -75,6 +85,6 @@ class ApplyController extends Controller
         // 거절을 누르면 신청데이터 삭제
         // Apply::where('user_id', $request->request_user_id)->delete();
         Apply::where('user_id', $request->request_user_id)->delete();
-        return redirect()->back();
+        return back()->with('success', '신청이 거절되었습니다!');
     }
 }

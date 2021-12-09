@@ -1,5 +1,5 @@
 <div class="container d-flex justify-content-center">
-    <div class="card" style="width: 30%; margin:10px">
+    <div class="card" style="width: 40%; margin:10px">
         @if ($post->image)
             <img src="{{ '/storage/images/'. $post->image }}" class="card-img-top" alt="post image">
             @else
@@ -15,14 +15,17 @@
             <li class="list-group-item">@if ($post->age == null)
                 <span>나이제한 : 없음</span>
                 @else
-                <span>나이제한 :{{ $post->age }}</span>
+                <span>나이제한 : {{ $post->age }}</span>
             @endif</li>
             <li class="list-group-item">모집인원 : {{ $post->applicant }} 명</li>
-            <li class="list-group-item">현재인원 : 0 명
+            <li class="list-group-item">현재 신청인원 : {{ DB::table('applies')->get()->count('post_id' == $post->id) }} 명
                 @if (Auth::user()->id == $post->user_id)
                     @else
-                     <a href="/apply/{{ $post->id }}" class="btn btn-info">신청하기</a>
-                @endif               
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                     <a href="/apply/{{ $post->id }}" class="btn btn-primary me-md-2">신청하기</a>
+                     <a href="/apply_cancel/{{ $post->id }}" class="btn btn-danger">신청취소</a>
+                    </div>
+                @endif
             </li>
             <li class="list-group-item">등록일 : {{ $post->created_at->diffForHumans() }}</li>
             <li class="list-group-item">작성일 : {{ $post->updated_at->diffForHumans() }}</li>
