@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Apply;
-use GuzzleHttp\Psr7\Request;
+use App\Models\Club;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ApplyController extends Controller
@@ -41,7 +42,39 @@ class ApplyController extends Controller
     // 신청 수락
     public function accept(Request $request)
     {
-    }
+        // 신청한 사람의 user_id를 갖고오자
+        // $test = $request->request_user_id;
+        // dd($test);
+        // $test2 = $request->request_post_id;
 
-    // 신청 거절
+        // 신청한 클럽에 그 신청한 유저가 있는지 체크
+        $check = Club::where('club_id', $request->request_post_id)->where('member', $request->request_user_id)->first();
+
+        // dd($check);
+
+        if ($check == null) {
+            // 신청한 사람의 user_id가 넘어가야함
+            // 404
+            $value['member'] = $request->request_user_id;
+            $value['club_id'] = $request->request_post_id;
+
+            // dd($value);
+
+            Club::create($value);
+
+            Apply::where('id', $request->request_user_id)->delete();
+
+            return back()->with('success', '신청이 수락되었습니다!');
+        } else {
+            return back()->with('error', '이미 있는 맴버입니다!');
+        }
+    }
+    public function refusal(Request $request)
+    {
+        // 거절을 누르면 신청데이터 삭제
+        // Apply::where('user_id', $request->request_user_id)->delete();
+        $check = Apply::where('user_id', $request->request_user_id);
+        dd($check);
+        return redirect()->back();
+    }
 }

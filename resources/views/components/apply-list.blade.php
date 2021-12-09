@@ -10,10 +10,12 @@
                 <div class="float-right">
                 <form method="post" name="form">
                     @csrf
-                    <input type="hidden" value="{{ $apply->user_id }}">
-                    <input type="hidden" value="{{ $apply->post_id }}">
-                    <a href="" class="mb-10 bg-blue-700 hover:bg-gray-900 text-white font-bold py-2 px-4 border border-gray-900 rounded">Ok</a>
-                    <a href="" class="mb-10 bg-red-700 hover:bg-gray-900 text-white font-bold py-2 px-4 border border-gray-900 rounded">No</a>
+                    <input type="hidden" value="{{ $apply->user_id }}" name="request_user_id">
+                    <input type="hidden" value="{{ $apply->post_id }}" name="request_post_id">
+                    {{-- <a href="/accept/{{ $apply->post_id }}" class="mb-10 bg-blue-700 hover:bg-gray-900 text-white font-bold py-2 px-4 border border-gray-900 rounded">Ok</a>
+                    <a href="/refusal/{{ $apply->user_id }}" class="mb-10 bg-red-700 hover:bg-gray-900 text-white font-bold py-2 px-4 border border-gray-900 rounded">No</a> --}}
+                    <input class="mb-10 bg-blue-700 hover:bg-gray-900 text-white font-bold py-2 px-4 border border-gray-900 rounded" type="submit" value="OK" onclick="javascript: form.action='/apply/accept';">
+                    <input class="mb-10 bg-red-700 hover:bg-gray-900 text-white font-bold py-2 px-4 border border-gray-900 rounded" type="submit" value="NO" onclick="javascript: form.action='/apply/refusal';">
                 </form>
                 </div>
                 </div>

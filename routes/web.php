@@ -37,4 +37,12 @@ Route::get('/mypage', [MypageController::class, "mypage"])->Middleware(['auth'])
 
 Route::get('/applyList', [ApplyController::class, "applyList"])->Middleware(['auth'])->name('applyList');
 
+// Route::get('/accept/{id}', [ApplyController::class, "accept"])->middleware(["auth"])->name('accept');
+
+// Route::get('/refusal/{id}', [ApplyController::class, "refusal"])->middleware(["auth"])->name('refusal');
+
+Route::post('/apply/accept', [ApplyController::class, "accept"])->middleware(["auth"])->name('accept');
+
+Route::post('/apply/refusal', [ApplyController::class, "refusal"])->middleware(["auth"])->name('refusal');
+
 require __DIR__ . '/auth.php';
