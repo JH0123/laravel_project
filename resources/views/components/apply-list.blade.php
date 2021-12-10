@@ -1,6 +1,6 @@
 {{-- 신청 목록 --}}
 <div class="flex h-full mt-4">
-<div class="w-1/5 border-r-2 border-solid border-gray-600">신청자 목록</div>
+<div class="w-1/5 border-r-2 ml-3 border-solid border-gray-600">신청자 목록</div>
   <div class="w-4/5 flex flex-col">
     @foreach ($applies as $apply)
           @if ($apply->user_id == Auth::user()->id)
