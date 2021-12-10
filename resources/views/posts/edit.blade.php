@@ -4,7 +4,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('수정 페이지') }}
         </h2>
-        <button onclick=location.href="{{ route('posts.show', ['post'=>$post->id]) }}" class="btn btn-info hover:bg-blue-700 font-bold text-white">상세보기</button>
+        <button onclick=location.href="{{ route('posts.show', ['post'=>$post->id]) }}" class="btn btn-secondary hover:bg-black font-bold text-white">상세보기</button>
         </div>
     </x-slot>
 
@@ -65,7 +65,7 @@
 
 
         <div class="col-12 m-2">
-          <button type="submit" class="btn btn-info hover:bg-blue-700 font-bold text-white">Edit</button>
+          <button type="submit" class="btn btn-secondary hover:bg-black font-bold text-white">Edit</button>
         </div>
   
       </form>

@@ -22,8 +22,8 @@
                 @if (Auth::user()->id == $post->user_id)
                     @else
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                     <a href="/apply/{{ $post->id }}" class="btn btn-primary me-md-2">신청하기</a>
-                     <a href="/apply_cancel/{{ $post->id }}" class="btn btn-danger">신청취소</a>
+                     <a href="/apply/{{ $post->id }}" class="btn btn-info font-bold text-white me-md-2">신청하기</a>
+                     <a href="/apply_cancel/{{ $post->id }}" class="btn btn-danger font-bold text-white">신청취소</a>
                     </div>
                 @endif
             </li>
@@ -33,7 +33,7 @@
 
         <div class="card-body flex">
            @can('update',$post)
-            <a href="{{ route('posts.edit',['post'=>$post->id]) }}" class="card-link">수정하기</a>
+            <a href="{{ route('posts.edit',['post'=>$post->id]) }}" class="btn btn-warning hover:bg-black font-bold text-white">수정하기</a>
             @endcan
 
             <div class="ml-4">
@@ -42,7 +42,7 @@
                     method="post" enctype="multipart/form-data">
                     @method('delete')
                     @csrf
-                    <button type="submit">삭제하기</button>
+                    <button type="submit" class="btn btn-danger hover:bg-black font-bold text-white">삭제하기</button>
                     </form>
                 @endcan
             </div>

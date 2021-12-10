@@ -4,7 +4,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('작성') }}
         </h2>
-        <button onclick=location.href="{{ route('posts.index') }}" class="btn btn-info hover:bg-blue-700 font-bold text-white">목록보기</button>
+        <button onclick=location.href="{{ route('posts.index') }}" class="btn btn-secondary hover:bg-black font-bold text-white">목록보기</button>
         </div>
     </x-slot>
 
@@ -56,7 +56,7 @@
         </div>
 
         <div class="col-12 m-2">
-          <button type="submit" class="btn btn-info hover:bg-blue-700 font-bold text-white">Submit</button>
+          <button type="submit" class="btn btn-secondary hover:bg-black font-bold text-white">Submit</button>
         </div>
   
       </form>
